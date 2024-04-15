@@ -28,4 +28,8 @@ canvas.create_window(200, 150, window=path_label)
 canvas.create_window(200, 170, window=path_button)
 
 
+# Download button
+download_button = Button(root, text="Download", font=("Arial", 12))
+canvas.create_window(200, 250, window=download_button)
+
 root.mainloop()
