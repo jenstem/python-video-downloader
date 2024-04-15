@@ -1,5 +1,17 @@
 from tkinter import *
 from tkinter import filedialog
+from pytube import YouTube
+from moviepy.editor import *
+
+
+# Function to download video
+def download_video():
+    video_path = url_entry.get()
+    file_path = path_label.cget("text")
+    mp4 = YouTube(video_path).streams.get_highest_resolution().download()
+    video_clip = VideoFileClip(mp4)
+    video_clip.close()
+
 
 # Function to get path
 def get_path():
@@ -27,14 +39,14 @@ canvas.create_window(200, 100, window=url_entry)
 
 
 # Path to download videos
-path_label = Label(root, text="Select path to download video: ", font=("Arial", 12))
+path_label = Label(root, text="Select path to save video to: ", font=("Arial", 12))
 path_button = Button(root, text="Select", command=get_path)
 canvas.create_window(200, 150, window=path_label)
 canvas.create_window(200, 170, window=path_button)
 
 
 # Download button
-download_button = Button(root, text="Download", font=("Arial", 12))
+download_button = Button(root, text="Download", font=("Arial", 12), command=download_video)
 canvas.create_window(200, 250, window=download_button)
 
 root.mainloop()
