@@ -1,6 +1,11 @@
 from tkinter import *
 from tkinter import filedialog
 
+# Function to get path
+def get_path():
+    path = filedialog.askdirectory()
+    path_label.config(text=path)
+
 
 root = Tk()
 root.title("Video Downloader")
@@ -23,7 +28,7 @@ canvas.create_window(200, 100, window=url_entry)
 
 # Path to download videos
 path_label = Label(root, text="Select path to download video: ", font=("Arial", 12))
-path_button = Button(root, text="Select")
+path_button = Button(root, text="Select", command=get_path)
 canvas.create_window(200, 150, window=path_label)
 canvas.create_window(200, 170, window=path_button)
 
