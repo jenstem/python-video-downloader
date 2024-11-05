@@ -5,8 +5,14 @@ from moviepy.editor import *
 import shutil
 
 
-# Function to download video
 def download_video():
+    """
+    Downloads a video from the provided URL and converts it to an MP3 audio file.
+
+    This function retrieves the video URL from the entry field, downloads the video
+    in the highest resolution, extracts the audio, and saves both the video and audio
+    files to the specified directory.
+    """
     video_path = url_entry.get()
     file_path = path_label.cget("text")
     print("Downloading video...")
@@ -24,8 +30,12 @@ def download_video():
     print("Download complete!")
 
 
-# Function to get path
 def get_path():
+    """
+    Opens a dialog for the user to select a directory to save downloaded files.
+
+    This function updates the path_label with the selected directory path.
+    """
     path = filedialog.askdirectory()
     path_label.config(text=path)
 
